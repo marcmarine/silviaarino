@@ -8,11 +8,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { Transition } from 'react-spring/renderprops'
+import { config } from 'react-spring'
 
-import Header from "./header"
+import Header from './header'
 import "./layout.css"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -22,26 +24,45 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
   return (
-    <>
+    <div
+      style={{
+        maxWidth: '800px',
+        padding: '3vw',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column'
+      }}
+    >
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
+      
+      <main
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
+          paddingTop: '3vw',
+          flex: '1'
         }}
       >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+        <Transition
+          config={config.slow}
+          keys={location.pathname}
+          from={{ opacity: 0 }}
+          enter={{ opacity: 1 }}
+          leave={{ opacity: 0 }}
+        >
+          {() => style => (
+            <article role="main" style={style}>
+              {children}
+            </article>
+          )}
+        </Transition>
+      </main>
+      <footer
+      style={{
+        paddingTop: '3vw'
+      }}  >
+        © {new Date().getFullYear()}, Silvia Ariño
+      </footer>
+    </div>
   )
 }
 
