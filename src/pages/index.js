@@ -9,7 +9,7 @@ import SEO from '../components/seo'
 const Index = props => {
   return (
     <Layout location={props.location}>
-      <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
+      <SEO title="Web" />
       <p 
         style={{ 
           fontSize: '2em',
