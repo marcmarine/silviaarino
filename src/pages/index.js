@@ -12,7 +12,7 @@ const Index = props => {
       <SEO title="Silvia Ariño" />
       <p 
         style={{ 
-          fontSize: '2em',
+          fontSize: '2vh',
           marginBottom: '3vw'
         }}
       >
