@@ -1,6 +1,9 @@
 :root {
   font-size: 11px;
 }
+::-webkit-scrollbar {
+  display: none;
+}
 * {
   font-weight: lighter !important;
 }
