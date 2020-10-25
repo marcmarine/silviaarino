@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { useTrail, animated } from 'react-spring'
-import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 const config = { mass: 1, tension: 4000, friction: 200 }
@@ -16,9 +15,8 @@ const Palabras = ({ data, location }) => {
     from: { opacity: 0, x: -5 }
   })
   return (
-    <Layout location={location}>
+    <>
       <SEO title="Palabras" />
-      <h2>Palabras</h2>
       <ul>
         {trail.map(({x, ...rest}, index) => (
           <animated.li
@@ -31,7 +29,7 @@ const Palabras = ({ data, location }) => {
           </animated.li>
         ))}
       </ul>
-    </Layout>
+    </>
   )
 }
 

@@ -16,11 +16,20 @@ a.active {
   pointer-events: none;
 }
 a:hover {
-  text-decoration: underline !important;
+  /* text-decoration: underline !important; */
 }
 a.active:hover,
 a:visited {
   text-decoration: line-through !important;
+}
+
+main a img:hover {
+  opacity: .9 !important;
+}
+
+main a img:active {
+  transition: all 100ms ease-in-out !important;
+  transform: scale(.98) !important;
 }
 main > h2 {
   margin-bottom: 3vw;
@@ -238,6 +247,7 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
+  background-color: #fbfbfb;
 }
 img {
   max-width: 100%;
