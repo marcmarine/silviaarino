@@ -4,8 +4,12 @@ import tw, { styled } from 'twin.macro'
 import { animated, useSpring, config } from 'react-spring'
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-const Wrapper = styled.article`
-  ${tw`max-w-screen-md`}
+const Wrapper = styled.div`
+  ${tw`max-w-5xl`}
+  margin: 8vh auto 4vw 5vw !important;
+  p {
+    text-align: justify;
+  }
 `
 
 const StyledLink = styled(Link)`
@@ -17,25 +21,29 @@ const StyledLink = styled(Link)`
   backdrop-filter: blur(4px);
 `
 
+const Title = styled.h1`
+  ${tw`text-6xl`}
+`
+
 const PageTemplate = ({ data: { mdx }, location }) => {
   const headerProps = useSpring({
     config: config.slow,
-    from: { opacity: 0, transform: 'translate3d(0, -5px, 0)' },
-    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+    from: { opacity: 0  },
+    to: { opacity: 1 },
   })
   const contentProps = useSpring({ 
     config: config.slow,
     delay: 150,
-    from: { opacity: 0, transform: 'translate3d(0, -5px, 0)' },
-    to: { opacity: 1, transform: 'translate3d(0, 0, 0)' },
+    from: { opacity: 0  },
+    to: { opacity: 1  },
   })
   return (
     <Wrapper>
       <StyledLink to={`/${mdx.frontmatter.category}`} style={headerProps}>{`<`}</StyledLink>
         {mdx.frontmatter.title && (
           <animated.header style={headerProps}>
-            {mdx.frontmatter.subtitulo && <h4>{mdx.frontmatter.subtitulo}</h4>}
-            <h2 style={{ fontSize: '2.25em' }}>{mdx.frontmatter.title}</h2>
+            {mdx.frontmatter.subtitulo && <h5>{mdx.frontmatter.subtitulo}</h5>}
+            <Title>{mdx.frontmatter.title}</Title>
             {mdx.frontmatter.colaboradores && (
               <h6>Con la colaboración de {mdx.frontmatter.colaboradores}</h6>
             )}

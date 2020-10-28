@@ -8,7 +8,7 @@ import Header from './header'
 import "./layout.css"
 
 const Main = styled.main`
-  ${tw`p-5 max-w-screen-xl mt-20 pt-10`}
+  ${tw`p-5 mt-20 pt-10`}
   ${props => props.isHome ? null : tw`mt-8`}
 `
 

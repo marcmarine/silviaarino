@@ -9,19 +9,18 @@ const Palabras = ({ data, location }) => {
   const { edges: posts } = data.allMdx
   const trail = useTrail(posts.length, {
     config,
-    x: 0,
     opacity: 1,
     delay: 150,
-    from: { opacity: 0, x: -5 }
+    from: { opacity: 0 }
   })
   return (
     <>
       <SEO title="Palabras" />
       <ul>
-        {trail.map(({x, ...rest}, index) => (
+        {trail.map(({ ...rest}, index) => (
           <animated.li
             key={posts[index].node.id}
-            style={{ ...rest, transform: x.interpolate(x => `translate3d(${x}px,0,0)`) }}
+            style={{ ...rest }}
           >
             <Link to={posts[index].node.fields.slug}>
               {posts[index].node.frontmatter.title}

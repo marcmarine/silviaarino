@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql, StaticQuery } from "gatsby"
+import tw, { styled } from 'twin.macro'
 import { Trail } from 'react-spring/renderprops'
 import Img from 'gatsby-image'
 import PropTypes from "prop-types"
@@ -11,10 +12,15 @@ const masonryOptions = {
 
 const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
+const Wrapper = styled(Masonry)`
+  ${tw`max-w-6xl`}
+`
+
 const Posts = ({data, filter}) => {
   const { edges: posts } = data.allMdx
   return (
-    <Masonry
+    <>
+    <Wrapper
       className={'my-gallery-class'} // default ''
       elementType={'ul'} // default 'div'
       options={masonryOptions} // default {}
@@ -25,8 +31,8 @@ const Posts = ({data, filter}) => {
       <Trail 
         items={posts.filter(post => filter ? post.node.frontmatter.category === filter : post.node.frontmatter.category !== 'palabras' )} 
         keys={post => post.node.id}
-        from={{opacity: '0', transform: 'translate3d(0,-5px,0)'}}
-        to={{opacity: '1', transform: 'translate3d(0,0px,0)'}}
+        from={{opacity: '0', transform: 'scale(0.99)'}}
+        to={{opacity: '1', transform: 'scale(1)'}}
       >
         {post => props => 
           <Link
@@ -42,7 +48,8 @@ const Posts = ({data, filter}) => {
           </Link>
         }
       </Trail>
-    </Masonry>
+    </Wrapper>
+    </>
   )
 }
 export default props => (
@@ -62,7 +69,7 @@ export default props => (
                 category
                 banner {
                   childImageSharp {
-                    sizes(maxWidth: 720) {
+                    sizes(maxWidth: 250) {
                       ...GatsbyImageSharpSizes
                     }
                   }

@@ -7,7 +7,6 @@ import Menu from './menu'
 
 const Wrapper = styled.header`
   ${tw`flex flex-col fixed z-10 top-0 flex-wrap w-full`};
-  backdrop-filter: blur(4px);
   transition: all 300ms cubic-bezier(0.39, 0.58, 0.57, 1);
   h1 {
     ${tw`p-5 pb-0`},

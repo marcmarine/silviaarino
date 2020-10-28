@@ -250,7 +250,6 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
-  background-color: #fbfbfb;
 }
 img {
   max-width: 100%;
@@ -671,7 +670,7 @@ pre tt:after {
 .my-gallery-class a {
   display: block;
   box-sizing: content-box;
-  width: calc(33.3% - 10px);
+  width: calc(25% - 10px);
   margin: 5px;
 }
 

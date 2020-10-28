@@ -11,6 +11,7 @@ const Wrapper = styled.nav`
 
 const StyledLink = styled(Link)`
   ${tw`pr-5 pt-4 pb-4`}
+  ${props => props.active ? `color: white` : null}
   &:first-of-type {
     ${tw`pl-5`}
   }
@@ -26,17 +27,18 @@ const Menu = ({ isHome }) => {
     'Bio'
   ]
   return (
-  <Wrapper>
-    {isHome && <StyledLink to="/">/</StyledLink>}
+  <Wrapper home={isHome}>
+    {isHome && <StyledLink to="/" onClick={() => setActive(null)}>/</StyledLink>}
     {items.map((item, index) => (
         <StyledLink 
           key={item}
           to={`/${item.toLowerCase()}`}
           onClick={() => setActive(index)}
+          style={active === index ? { color: 'white' }  : null}
         >
           <RoughNotation 
-            type="underline" 
-            color="grey" 
+            type="highlight" 
+            color="black" 
             show={active === index && isHome}
             animationDuration={200}
           >

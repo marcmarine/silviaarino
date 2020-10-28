@@ -10,8 +10,8 @@ const Index = props => {
       <p 
         style={{ 
           fontSize: '3.5vh',
-          marginTop: '10vh',
-          paddingLeft: '2vw'
+          marginTop: '20vh',
+          paddingLeft: '10vw'
         }}
       >
         Continúo envolviendo lo innecesario.<br/>

@@ -14,7 +14,10 @@ const marquee = keyframes`
 
 const  Marquee = styled(Link)`
   ${tw`pt-4 fixed bottom-0 w-full`};
-  backdrop-filter: blur(4px);
+  // backdrop-filter: blur(4px);
+  background-color: black;
+  background-blend-mode: screen;
+  color: white;
   height: 35px;
   > div {
     display: flex;
