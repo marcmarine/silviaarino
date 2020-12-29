@@ -12,8 +12,8 @@ const marquee = keyframes`
   }
 `
 
-const  Marquee = styled(Link)`
-  ${tw`pt-4 fixed bottom-0 w-full`};
+const  Marquee = styled.span`
+  ${tw`pt-4 fixed bottom-0 w-full pointer-events-none`};
   // backdrop-filter: blur(4px);
   background-color: black;
   background-blend-mode: screen;
@@ -30,7 +30,7 @@ const  Marquee = styled(Link)`
     float: left;
     text-transform: uppercase;
     &:nth-child(2n) {
-      text-decoration: underline;
+      // text-decoration: underline;
     }
     &:nth-child(n+5) {
       ${tw`hidden md:block`}
@@ -41,7 +41,7 @@ const  Marquee = styled(Link)`
 const CTA = () => {
   let textos = [];
   for (var i = 0; i < 12; i++) {
-    textos.push('Descargar Curriculum')
+    textos.push('En construcción')
   }
   return (
     <Marquee to="/">
