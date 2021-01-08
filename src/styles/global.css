@@ -53,6 +53,12 @@ p {
   text-transform: uppercase;
 }
 
+@media (max-width: 1024px) {
+  .marquee span:nth-child(n+5) {
+    display: none;
+  }
+}
+
 @keyframes marquee {
   0% {
     left: 0
