@@ -5,13 +5,13 @@ import PropTypes from "prop-types"
 const Posts = ({data, filter}) => {
   const { edges: posts } = data.allMdx
   return (
-    <div className="flex flex-col max-w-md space-y-1">
+    <div className="flex flex-col max-w-md">
       {posts.map( post => ( 
-        <Link to={post.node.fields.slug}>
+        <Link className="mt-1" to={post.node.fields.slug}>
           {post.node.frontmatter.title && post.node.frontmatter.title}
         </Link>
       ))}
-      <Link to="/bio">Bio</Link>
+      <Link className="mt-10" to="/bio">Bio</Link>
     </div>
   )
 }
