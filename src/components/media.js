@@ -15,7 +15,7 @@ export default (props) => {
   }
   if (/youtu/.test(props.src) ) {
     return (
-      <div className="relative mt-10 mb-2" style={{ paddingTop: '56.25%' }}>
+      <div className="relative mt-9 mb-2" style={{ paddingTop: '56.25%' }}>
         <Player 
           url={props.src}
           style={{ position: 'absolute', top: 0, left: 0 }}

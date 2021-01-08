@@ -20,3 +20,44 @@ a:hover {
 p {
   margin-bottom: 1rem;
 }
+
+.article hr {
+  display: none;
+}
+
+.article hr ~ p {
+  margin: 0;
+}
+
+.gatsby-resp-image-wrapper {
+  margin-top: 2.5rem;
+  margin-left: 0 !important
+}
+
+.marquee {
+  background-color: black;
+  background-blend-mode: screen;
+  color: white;
+  height: 35px;
+}
+
+.marquee > div {
+  display: flex;
+  width: 200%;
+  position: absolute;
+  animation: marquee 11s linear infinite
+}
+
+.marquee span {
+  float: left;
+  text-transform: uppercase;
+}
+
+@keyframes marquee {
+  0% {
+    left: 0
+  }
+  100% {
+    left: -100%;
+  }
+}
