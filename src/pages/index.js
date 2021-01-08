@@ -2,23 +2,15 @@ import React from "react"
 import Posts from '../components/posts'
 import SEO from '../components/seo'
 
+import imagen from './../images/presentacion.jpg'
 
 const Index = props => {
   return (
     <>
       <SEO title="Silvia Ariño" />
-      <p 
-        style={{ 
-          fontSize: '3.5vh',
-          marginTop: '20vh',
-          paddingLeft: '10vw'
-        }}
-      >
-        Continúo envolviendo lo innecesario.<br/>
-        Pero mis palabras torcidas, mis jadeos<br/>
-        no destapan el calendario.
-      </p>
-      {/* <Posts/> */}
+      <h1 className="text-3xl font-medium mb-40 uppercase">Silvia Ariño</h1>
+      <Posts />
+      <img className="absolute w-80 right-0" src={imagen} alt="Imágen de presentación" />
     </>
   )
 }

@@ -2,18 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import tw, { styled } from 'twin.macro'
-import CTA from './cta'
+import UnderConstruction from './under-construction'
 
-import Header from './header'
-import "./layout.css"
+// import "./layout.css"
 
 const Main = styled.main`
-  ${tw`p-5 mt-20 pt-10`}
+  max-width: 90rem;
   ${props => props.isHome ? null : tw`mt-8`}
-`
-
-const Footer = styled.footer`
-  ${tw`p-5 max-w-screen-md`}  
 `
 
 const Layout = ({ children, location }) => {
@@ -27,18 +22,12 @@ const Layout = ({ children, location }) => {
     }
   `)
   return (
-    <div>
-      <Header siteTitle={data.site.siteMetadata.title} location={location} />
-      <Main isHome={location.pathname === '/'}>
-        <article role="main">
-          {children}
-        </article>
+    <>
+      <Main className="relative mx-auto px-5 py-24" isHome={location.pathname === '/'}>
+        {children}
       </Main>
-      <CTA />
-      <Footer>
-        {/* © {new Date().getFullYear()}, Silvia Ariño */}
-      </Footer>
-    </div>
+      <UnderConstruction />
+    </>
   )
 }
 

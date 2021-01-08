@@ -38,7 +38,7 @@ main > h2 {
   margin-bottom: 3vw;
 }
 html {
-  font-family: sans-serif;
+  font-family: 'Verdana' sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -241,8 +241,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
-    "Liberation Mono", Menlo, Courier, monospace;
+  font-family: 'Verdana', 'Geneva' ,sans-serif; 
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -268,8 +267,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono",
-    "Liberation Mono", Menlo, Courier, monospace;
+  font-family: 'Verdana', 'Geneva' ,sans-serif; 
   text-transform: uppercase;
 }
 

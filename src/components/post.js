@@ -1,73 +1,66 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
+import React, { useEffect } from "react"
+import { graphql } from "gatsby"
 import tw, { styled } from 'twin.macro'
-import { animated, useSpring, config } from 'react-spring'
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXWrapper } from './mdx-provider'
 
-const Wrapper = styled.div`
-  ${tw`max-w-5xl`}
-  margin: 8vh auto 4vw 5vw !important;
+const Wrapper = styled.article`
+  max-width: 90rem;
+  main {
+    ${tw`w-full lg:w-1/4`};
+  }
   p {
-    text-align: justify;
+    ${tw`mb-5`}
+  }
+  aside {
+    ${tw`flex-1 lg:pt-12`};
+  }
+  hr {
+    display: none;
+    ~ p {
+      margin: 0;
+    }
+  }
+  .gatsby-resp-image-wrapper {
+    ${tw`mt-10`};
+    margin-left: 0 !important
   }
 `
 
-const StyledLink = styled(Link)`
-  ${tw`p-4 pr-3`};
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 11;
-  backdrop-filter: blur(4px);
-`
-
-const Title = styled.h1`
-  ${tw`text-6xl`}
-`
-
 const PageTemplate = ({ data: { mdx }, location }) => {
-  const headerProps = useSpring({
-    config: config.slow,
-    from: { opacity: 0  },
-    to: { opacity: 1 },
-  })
-  const contentProps = useSpring({ 
-    config: config.slow,
-    delay: 150,
-    from: { opacity: 0  },
-    to: { opacity: 1  },
-  })
+  useEffect(() => {
+    const article = document.getElementsByTagName("article")[0]
+    const main = document.createElement('main')
+    const aside = document.createElement('aside')
+    article.appendChild(main)
+    article.appendChild(aside)
+    const content = Array.from(article.childNodes)
+    const HR = el => el.tagName === "HR"
+    content.forEach((el, index) => {
+      if (index < content.findIndex(HR)) {
+        main.appendChild(el)
+      } else if (index < content.length - 2) {
+        aside.appendChild(el)
+      }
+    })
+  },[] )
   return (
-    <Wrapper>
-      <StyledLink to={`/${mdx.frontmatter.category}`} style={headerProps}>{`<`}</StyledLink>
-        {mdx.frontmatter.title && (
-          <animated.header style={headerProps}>
-            {mdx.frontmatter.subtitulo && <h5>{mdx.frontmatter.subtitulo}</h5>}
-            <Title>{mdx.frontmatter.title}</Title>
-            {mdx.frontmatter.colaboradores && (
-              <h6>Con la colaboración de {mdx.frontmatter.colaboradores}</h6>
-            )}
-            <h4>{mdx.frontmatter.tipo}</h4>
-            {/* <h5>{mdx.frontmatter.date}</h5> */}
-          </animated.header>
-        )}
-      <animated.div style={contentProps}>
+    <Wrapper className="mx-auto block lg:flex lg:space-x-40">
+      {mdx.frontmatter.title && <h1 className="font-medium mb-3 uppercase">{mdx.frontmatter.title}</h1>}
+      {mdx.frontmatter.date && <h4 className="mb-8">{mdx.frontmatter.date.split('-', 1)}</h4>}
+      <MDXWrapper>
         <MDXRenderer>{mdx.body}</MDXRenderer>
-      </animated.div>
+      </MDXWrapper>
     </Wrapper>
   )
 }
 export const pageQuery = graphql`
   query BlogPostQuery($id: String) {
     mdx(id: { eq: $id }) {
-      id
+      id 
       frontmatter {
         title
-        colaboradores
-        category
-        subtitulo
-        date(formatString: "YYYY")
-        tipo
+        date
       }
       body
     }

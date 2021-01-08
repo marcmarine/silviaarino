@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-size: 11px;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: 'Verdana', sans-serif;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin-bottom: 1rem;
+}
