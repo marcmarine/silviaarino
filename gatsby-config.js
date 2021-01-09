@@ -38,8 +38,18 @@ module.exports = {
               linkImagesToOriginal: false
             },
           },
+          {
+            resolve: `gatsby-remark-audio`,
+            options: {
+              preload: 'auto',
+              loop: false,
+              controls: true,
+              muted: false,
+              autoplay: false
+            }
+          },
         ],
-        plugins: [ `gatsby-remark-images` ],
+        plugins: [ `gatsby-remark-images`, `gatsby-remark-audio` ],
       },
     },
     `gatsby-plugin-sharp`,

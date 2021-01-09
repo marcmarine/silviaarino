@@ -1,10 +1,10 @@
 import React from 'react'
-import Player from 'react-player'
+import Video from 'react-player'
 
 export default (props) => {
-  if (/soundcloud|issuu/.test(props.src) ) {
+  if (/soundcloud|issuu/.test(props.src) || /link/.test(props.alt) ) {
     return (
-      <a className="block mt-10 flex items-center space-x-2" href={props.src} target="_blank" rel="noreferrer">
+      <a className="mt-10 flex items-center space-x-2" href={props.src} target="_blank" rel="noreferrer">
         <span>{props.alt}</span>
         <svg xmlns="http://www.w3.org/2000/svg" width={12} viewBox="0 0 20 20" fill="currentColor">
           <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
@@ -13,10 +13,10 @@ export default (props) => {
       </a>
     )
   }
-  if (/youtu/.test(props.src) ) {
+  if (/youtu|vimeo/.test(props.src) || /video/.test(props.alt) ) {
     return (
       <div className="relative mt-9 mb-2" style={{ paddingTop: '56.25%' }}>
-        <Player 
+        <Video
           url={props.src}
           style={{ position: 'absolute', top: 0, left: 0 }}
           width='100%'
@@ -31,5 +31,5 @@ export default (props) => {
       </div>
     )
   }
-  return <img {...props} />
+  return <img src={props.src} alt={props.alt} {...props} />
 } 

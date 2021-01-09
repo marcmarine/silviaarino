@@ -23,8 +23,8 @@ const PageTemplate = ({ data: { mdx }, location }) => {
     })
   },[] )
   return (
-    <article className="article mx-auto block lg:flex lg:space-x-40">
-      {mdx.frontmatter.title && <h1 className="font-medium mb-3 uppercase">{mdx.frontmatter.title}</h1>}
+    <article className="article mx-auto block lg:flex lg:space-x-40 leading-relaxed">
+      {mdx.frontmatter.title && <h1 className="font-medium mb-2 uppercase">{mdx.frontmatter.title}</h1>}
       {mdx.frontmatter.date && <h4 className="mb-8">{mdx.frontmatter.date.split('-', 1)}</h4>}
       <MDXWrapper>
         <MDXRenderer>{mdx.body}</MDXRenderer>
