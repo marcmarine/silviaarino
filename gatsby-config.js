@@ -37,19 +37,9 @@ module.exports = {
               maxWidth: 1200,
               linkImagesToOriginal: false
             },
-          },
-          {
-            resolve: `gatsby-remark-audio`,
-            options: {
-              preload: 'auto',
-              loop: false,
-              controls: true,
-              muted: false,
-              autoplay: false
-            }
-          },
+          }
         ],
-        plugins: [ `gatsby-remark-images`, `gatsby-remark-audio` ],
+        plugins: [ `gatsby-remark-images` ],
       },
     },
     `gatsby-plugin-sharp`,

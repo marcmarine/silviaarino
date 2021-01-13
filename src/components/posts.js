@@ -6,12 +6,14 @@ const Posts = ({data, filter}) => {
   const { edges: posts } = data.allMdx
   return (
     <div className="flex flex-col max-w-md">
-      {posts.map( post => ( 
-        <Link className="mt-1" to={post.node.fields.slug}>
+      {posts.filter(post =>  !/\//.test(post.node.frontmatter.title) && post.node.frontmatter.date !== null ? post : null).map( post => ( 
+        <Link key={post.node.fields.slug} className="mt-1" to={post.node.fields.slug}>
           {post.node.frontmatter.title && post.node.frontmatter.title}
         </Link>
       ))}
-      <Link className="mt-10" to="/bio">Bio</Link>
+      <Link to="/varios">Varios</Link>
+      <Link className="mt-10" to="/poemas">Poemas</Link>
+      <Link className="mt-1" to="/bio">Bio</Link>
     </div>
   )
 }
@@ -29,6 +31,7 @@ export default props => (
               id
               frontmatter {
                 title
+                date
               }
               fields {
                 slug

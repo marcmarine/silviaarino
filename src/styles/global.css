@@ -17,14 +17,19 @@ h4,
 h5,
 h6 {
   font-family: 'Verdana', sans-serif;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+p {
+  margin-bottom: 1.5rem;
 }
 
 a:hover {
   text-decoration: underline;
-}
-
-p {
-  margin-bottom: 1rem;
 }
 
 .article hr {
@@ -38,38 +43,4 @@ p {
 .gatsby-resp-image-wrapper {
   margin-top: 2.5rem;
   margin-left: 0 !important
-}
-
-.marquee {
-  background-color: black;
-  background-blend-mode: screen;
-  color: white;
-  height: 35px;
-}
-
-.marquee > div {
-  display: flex;
-  width: 200%;
-  position: absolute;
-  animation: marquee 11s linear infinite
-}
-
-.marquee span {
-  float: left;
-  text-transform: uppercase;
-}
-
-@media (max-width: 1024px) {
-  .marquee span:nth-child(n+5) {
-    display: none;
-  }
-}
-
-@keyframes marquee {
-  0% {
-    left: 0
-  }
-  100% {
-    left: -100%;
-  }
 }

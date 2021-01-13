@@ -4,6 +4,7 @@ import Media from './media'
 
 const GlobalScopeComponents = {
   img: Media,
+  p: props => <p className="mb-3" {...props} />
 }
 
 export const MDXWrapper = ({ children }) => {
