@@ -25,7 +25,10 @@ const Varios = ({ data }) => {
 
 export const query = graphql`
   query {
-    allMdx(filter: {fileAbsolutePath: {regex: "/varios/"}}) {
+    allMdx(
+      filter: {fileAbsolutePath: {regex: "/varios/"}},
+      sort: {order: DESC, fields: frontmatter___date}
+    ) {
       edges {
         node {
           frontmatter {

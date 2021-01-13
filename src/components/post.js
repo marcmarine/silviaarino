@@ -4,9 +4,9 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXWrapper } from './mdx-provider'
 
 const PageTemplate = ({ data: { mdx }, location }) => {
+  const filter = !/\//.test(mdx.frontmatter.title) && mdx.frontmatter.date !== null
   useEffect(() => {
-    console.log(mdx)
-    if (mdx.frontmatter.date !== null) {
+    if (filter) {
       const article = document.getElementsByTagName("article")[0]
       const main = document.createElement('main')
       const aside = document.createElement('aside')
@@ -26,9 +26,9 @@ const PageTemplate = ({ data: { mdx }, location }) => {
     }
   }, [mdx])
   return (
-    <article className={`article mx-auto block leading-relaxed ${mdx.frontmatter.date && `lg:flex lg:space-x-40`}`}>
+    <article className={`article mx-auto block leading-relaxed ${filter && `lg:flex lg:space-x-40`}`}>
       {mdx.frontmatter.title && <h1 className="font-medium mb-2 uppercase">{mdx.frontmatter.title}</h1>}
-      {mdx.frontmatter.date && <h4 className="mb-8">{mdx.frontmatter.date.split('-', 1)}</h4>}
+      {filter && <h4 className="mb-8">{mdx.frontmatter.date.split('-', 1)}</h4>}
       <MDXWrapper>
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </MDXWrapper>

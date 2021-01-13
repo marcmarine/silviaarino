@@ -9,7 +9,7 @@ const Poemas = ({ data }) => {
     <div>
       <h2 className="uppercase mb-10">Poemas</h2>
       {posts.map(post => (
-        <div className="pb-5 mb-20">
+        <div className="pb-5 mb-10">
           <Link to={`/${post.node.slug}`}>
             <h3 className="mb-0">{post.node.frontmatter.title}</h3>
           </Link>
@@ -28,7 +28,10 @@ const Poemas = ({ data }) => {
 
 export const query = graphql`
   query {
-    allMdx(filter: {fileAbsolutePath: {regex: "/poemas/"}}) {
+    allMdx(
+      filter: {fileAbsolutePath: {regex: "/poemas/"}},
+      sort: {order: DESC, fields: fileAbsolutePath}
+    ) {
       edges {
         node {
           frontmatter {
