@@ -2,12 +2,14 @@ import * as React from 'react'
 import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXWrapper } from './../components/mdx-provider'
+import SEO from './../components/seo'
 
 const Poemas = ({ data }) => {
   const { edges: posts } = data.allMdx
   return (
-    <div>
-      <h2 className="uppercase mb-10">Poemas</h2>
+    <>
+      <SEO title="Poemas" />
+      <h2 className="font-bold uppercase mb-10">Poemas</h2>
       {posts.map(post => (
         <div className="pb-5 mb-10">
           <Link to={`/${post.node.slug}`}>
@@ -18,11 +20,11 @@ const Poemas = ({ data }) => {
           </MDXWrapper>
         </div>
       ))}
-      <p>_</p>
+      {/* <p>_</p>
       <p>Continúo envolviendo lo innecesario,<br /> 
       pero mis palabras torcidas, mis jadeos,<br />
-      no destapan el calen<br />dario.</p>
-    </div>
+      no destapan el calendario.</p> */}
+    </>
   )
 }
 

@@ -19,6 +19,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value: parent.sourceInstanceName
     })
 
+    createNodeField({
+      name: `relativeDirectory`,
+      node,
+      value: parent.relativeDirectory
+    })
+
   }
 }
 

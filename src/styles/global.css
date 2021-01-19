@@ -20,6 +20,10 @@ h6 {
   margin-bottom: 1.5rem;
 }
 
+p + h2 {
+  margin-top: 3rem;
+}
+
 h1 {
   text-transform: uppercase;
 }
@@ -32,7 +36,8 @@ a:hover {
   text-decoration: underline;
 }
 
-.article hr {
+.article hr,
+.varios hr {
   display: none;
 }
 
@@ -42,5 +47,11 @@ a:hover {
 
 .gatsby-resp-image-wrapper {
   margin-top: 2.5rem;
+  margin-left: 0 !important
+}
+
+.varios .gatsby-resp-image-wrapper {
+  margin-top: 0;
+  margin-bottom: 2.5rem;
   margin-left: 0 !important
 }

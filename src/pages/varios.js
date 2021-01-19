@@ -1,13 +1,16 @@
 import * as React from 'react'
 import { graphql, Link } from 'gatsby'
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { MDXWrapper } from '../components/mdx-provider'
+import { MDXWrapper } from './../components/mdx-provider'
+import SEO from './../components/seo'
 
 const Varios = ({ data }) => {
   const { edges: posts } = data.allMdx
   return (
-    <div>
-      <h2 className="uppercase mb-10">Varios</h2>
+    <>
+    <SEO title="Varios" />
+    <div className="varios">
+      <h2 className="font-bold uppercase mb-10">Varios</h2>
       {posts.map(post => (
         <div className="pb-5 mb-20">
           <Link to={`/${post.node.slug}`}>
@@ -20,6 +23,7 @@ const Varios = ({ data }) => {
         </div>
       ))}
     </div>
+    </>
   )
 }
 

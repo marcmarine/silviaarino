@@ -7,10 +7,10 @@ const GlobalScopeComponents = {
   p: props => <p className="mb-3" {...props} />
 }
 
-export const MDXWrapper = ({ children }) => {
+export const MDXWrapper = (props) => {
   return (
-    <MDXProvider components={{ ...GlobalScopeComponents }}>
-      {children}
+    <MDXProvider {...props} components={{ ...GlobalScopeComponents }}>
+      {props.children}
     </MDXProvider>
   )
 }

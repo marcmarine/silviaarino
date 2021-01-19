@@ -10,7 +10,7 @@ const Index = props => {
       <SEO title="Silvia Ariño" />
       <h1 className="text-3xl font-medium mb-40 uppercase">Silvia Ariño</h1>
       <Posts />
-      <img className="absolute w-80 right-0" src={imagen} alt="Imágen de presentación" />
+      <img className="absolute w-80 hidden md:block md:right-1/4 md:top-1/2" src={imagen} alt="Imágen de presentación" />
     </>
   )
 }

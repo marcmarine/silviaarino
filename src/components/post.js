@@ -2,11 +2,11 @@ import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXWrapper } from './mdx-provider'
+import SEO from './../components/seo'
 
 const PageTemplate = ({ data: { mdx }, location }) => {
-  const filter = !/\//.test(mdx.frontmatter.title) && mdx.frontmatter.date !== null
   useEffect(() => {
-    if (filter) {
+    if (!/poemas/.test(mdx.fields.relativeDirectory)) {
       const article = document.getElementsByTagName("article")[0]
       const main = document.createElement('main')
       const aside = document.createElement('aside')
@@ -26,13 +26,21 @@ const PageTemplate = ({ data: { mdx }, location }) => {
     }
   }, [mdx])
   return (
-    <article className={`article mx-auto block leading-relaxed ${filter && `lg:flex lg:space-x-40`}`}>
-      {mdx.frontmatter.title && <h1 className="font-medium mb-2 uppercase">{mdx.frontmatter.title}</h1>}
-      {filter && <h4 className="mb-8">{mdx.frontmatter.date.split('-', 1)}</h4>}
-      <MDXWrapper>
-        <MDXRenderer>{mdx.body}</MDXRenderer>
-      </MDXWrapper>
-    </article>
+    <>
+      <SEO title={
+        /poemas/.test(mdx.fields.relativeDirectory) ? `Poema ${mdx.frontmatter.title}` 
+        : 
+        /varios/.test(mdx.fields.relativeDirectory) ? `Varios` 
+        : 
+        mdx.frontmatter.title} />
+      <article className={`article mx-auto block leading-relaxed ${!/poemas/.test(mdx.fields.relativeDirectory) && `lg:flex lg:space-x-40`}`}>
+        {mdx.frontmatter.title && <h1 className="font-bold mb-2 uppercase">{mdx.frontmatter.title}</h1>}
+        {!/poemas/.test(mdx.fields.relativeDirectory) && <h4 className="mb-8">{mdx.frontmatter.date.split('-', 1)}</h4>}
+        <MDXWrapper>
+          <MDXRenderer>{mdx.body}</MDXRenderer>
+        </MDXWrapper>
+      </article>
+    </>
   )
 }
 export const pageQuery = graphql`
@@ -44,6 +52,9 @@ export const pageQuery = graphql`
         date
       }
       body
+      fields {
+        relativeDirectory
+      }
     }
   }
 `

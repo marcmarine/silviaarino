@@ -15,7 +15,7 @@ export default (props) => {
   }
   if (/youtu|vimeo/.test(props.src) || /video/.test(props.alt) ) {
     return (
-      <div className="relative mt-9 mb-2" style={{ paddingTop: '56.25%' }}>
+      <div className="relative mt-9 mb-2 bg-gray-200" style={{ paddingTop: '56.25%' }}>
         <Video
           url={props.src}
           style={{ position: 'absolute', top: 0, left: 0 }}
